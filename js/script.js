@@ -240,7 +240,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // ============ PREMIUM QUOTE POPUP ============
+        // ============ PREMIUM QUOTE POPUP ============
     const quotePopup = document.getElementById('quotePopup');
     const closePopup = document.getElementById('closePopup');
     const skipPopup = document.getElementById('skipPopup');

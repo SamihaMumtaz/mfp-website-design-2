@@ -833,19 +833,25 @@ body {
 }
 
 /* ==========================================
-   PREMIUM QUOTE POPUP
+   ZERO SPACE POPUP FIX (100% COVERAGE)
    ========================================== */
 .quote-popup {
     position: fixed;
-    inset: 0;
-    z-index: 9998;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    /* Poori screen cover karega */
+    z-index: 99999;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 16px;
+    padding: 0;
+    /* Koi space nahi */
+    margin: 0;
     opacity: 0;
     visibility: hidden;
-    transition: opacity .4s ease, visibility .4s ease;
+    transition: all 0.3s ease;
 }
 
 .quote-popup.active {
@@ -853,28 +859,30 @@ body {
     visibility: visible;
 }
 
+/* Blurred Backdrop */
 .quote-popup-backdrop {
     position: absolute;
     inset: 0;
-    background: rgba(10, 5, 20, 0.75);
+    background: rgba(10, 5, 20, 0.7);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
 }
 
+/* Popup Card */
 .quote-popup-card {
     position: relative;
-    width: 100%;
-    max-width: 440px;
-    background: linear-gradient(160deg, #ffffff 0%, #fff7ed 100%);
-    border-radius: 28px;
-    padding: 36px 28px 24px;
-    box-shadow:
-        0 30px 80px -20px rgba(249, 115, 22, 0.45),
-        0 0 0 1px rgba(249, 115, 22, 0.15);
-    transform: scale(0.85) translateY(30px);
-    transition: transform .45s cubic-bezier(.34, 1.56, .64, 1);
-    overflow: hidden;
-    max-height: 92vh;
+    width: 90%;
+    /* Mobile par thora gap screen ke kinaron se */
+    max-width: 380px;
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 24px 20px 20px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    transform: scale(0.9) translateY(20px);
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    /* YEH HEIGHT KO SCREEN KE ANDAR RAKHEGA */
+    max-height: 90vh;
     overflow-y: auto;
 }
 
@@ -882,112 +890,111 @@ body {
     transform: scale(1) translateY(0);
 }
 
+/* Custom Scrollbar for Popup */
+.quote-popup-card::-webkit-scrollbar {
+    width: 4px;
+}
+
+.quote-popup-card::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.quote-popup-card::-webkit-scrollbar-thumb {
+    background: #e5e7eb;
+    border-radius: 10px;
+}
+
+/* Top Gradient Border */
 .quote-popup-card::before {
     content: '';
     position: absolute;
-    top: -80px;
-    right: -80px;
-    width: 200px;
-    height: 200px;
-    background: radial-gradient(circle, rgba(249, 115, 22, 0.2), transparent 70%);
-    border-radius: 50%;
-    pointer-events: none;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background: linear-gradient(90deg, var(--brand), var(--accent-pink));
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
 }
 
+/* Close Button */
 .quote-popup-close {
     position: absolute;
     top: 14px;
     right: 14px;
-    width: 36px;
-    height: 36px;
+    width: 28px;
+    height: 28px;
     border-radius: 50%;
-    background: rgba(249, 115, 22, 0.1);
-    color: var(--brand);
+    background: #f3f4f6;
+    color: #6b7280;
     border: none;
-    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 15px;
-    transition: all .25s;
-    z-index: 2;
+    font-size: 12px;
+    cursor: pointer;
+    z-index: 10;
 }
 
 .quote-popup-close:hover {
-    background: var(--brand);
+    background: #111827;
     color: #fff;
-    transform: rotate(90deg) scale(1.1);
 }
 
+/* Header Section */
 .quote-popup-header {
     text-align: center;
-    margin-bottom: 22px;
+    margin-bottom: 16px;
+    margin-top: 5px;
 }
 
 .quote-popup-icon {
-    width: 68px;
-    height: 68px;
-    margin: 0 auto 14px;
-    border-radius: 20px;
+    width: 50px;
+    height: 50px;
+    margin: 0 auto 10px;
+    border-radius: 14px;
     background: linear-gradient(135deg, var(--brand), var(--accent-pink));
     color: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 28px;
-    box-shadow: 0 14px 30px -8px var(--brand-pulse);
-    animation: popupIconFloat 3s ease-in-out infinite;
-}
-
-@keyframes popupIconFloat {
-
-    0%,
-    100% {
-        transform: translateY(0) rotate(-4deg);
-    }
-
-    50% {
-        transform: translateY(-6px) rotate(4deg);
-    }
+    font-size: 22px;
+    box-shadow: 0 8px 16px -4px var(--brand-pulse);
 }
 
 .quote-popup-badge {
     display: inline-block;
-    padding: 4px 12px;
-    background: rgba(244, 63, 94, 0.12);
+    padding: 4px 10px;
+    background: rgba(244, 63, 94, 0.1);
     color: var(--accent-pink);
-    font-size: 10px;
+    font-size: 9px;
     font-weight: 800;
-    letter-spacing: 1.5px;
+    letter-spacing: 1px;
     text-transform: uppercase;
     border-radius: 999px;
-    margin-bottom: 10px;
+    margin-bottom: 6px;
 }
 
 .quote-popup-title {
     font-family: 'Urbanist', sans-serif;
-    font-size: 1.6rem;
+    font-size: 1.25rem;
     font-weight: 800;
-    color: var(--brand-deep);
+    color: #111827;
     line-height: 1.2;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
 }
 
 .quote-popup-title .text-brand {
-    background: linear-gradient(135deg, var(--brand), var(--accent-pink));
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--brand);
 }
 
 .quote-popup-desc {
-    font-size: 0.85rem;
-    color: #6B7280;
-    line-height: 1.5;
-    max-width: 320px;
-    margin: 0 auto;
+    font-size: 0.75rem;
+    color: #6b7280;
+    line-height: 1.4;
 }
 
+/* Form Fields */
 .quote-popup-form {
     display: flex;
     flex-direction: column;
@@ -997,120 +1004,108 @@ body {
 
 .quote-popup-field {
     position: relative;
-    display: flex;
-    align-items: center;
 }
 
 .quote-popup-field i {
     position: absolute;
-    left: 16px;
-    color: var(--brand);
-    font-size: 14px;
-    pointer-events: none;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9ca3af;
+    font-size: 12px;
 }
 
 .quote-popup-field input {
     width: 100%;
-    padding: 13px 16px 13px 44px;
-    border: 2px solid #FFEDD5;
-    border-radius: 12px;
-    font-size: 0.9rem;
-    background: #ffffff;
-    color: var(--brand-deep);
+    padding: 10px 12px 10px 36px;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    background: #f9fafb;
+    color: #111827;
     outline: none;
-    transition: all .3s;
-}
-
-.quote-popup-field input::placeholder {
-    color: #9CA3AF;
 }
 
 .quote-popup-field input:focus {
     border-color: var(--brand);
-    box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.12);
+    background: #ffffff;
 }
 
+/* Submit Button */
 .quote-popup-submit {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
+    gap: 6px;
     width: 100%;
-    padding: 15px;
-    margin-top: 4px;
+    padding: 12px;
     background: linear-gradient(135deg, var(--brand), var(--accent-pink));
     color: #fff;
     border: none;
-    border-radius: 12px;
-    font-weight: 800;
-    font-size: 0.95rem;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 0.9rem;
     cursor: pointer;
-    box-shadow: 0 12px 28px -10px var(--brand-pulse);
-    transition: all .3s;
+    box-shadow: 0 8px 16px -6px var(--brand-pulse);
 }
 
-.quote-popup-submit:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 18px 36px -10px var(--brand-pulse);
-}
-
-.quote-popup-submit i {
-    transition: transform .3s;
-}
-
-.quote-popup-submit:hover i {
-    transform: translateX(4px);
-}
-
+/* Skip Link */
 .quote-popup-skip {
     display: block;
     width: 100%;
     background: transparent;
     border: none;
-    color: #9CA3AF;
-    font-size: 0.8rem;
-    padding: 8px;
+    color: #9ca3af;
+    font-size: 0.75rem;
+    padding: 4px;
+    text-align: center;
     cursor: pointer;
-    transition: color .25s;
 }
 
-.quote-popup-skip:hover {
-    color: var(--brand);
-}
-
+/* Footer */
 .quote-popup-footer {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 6px;
-    padding-top: 14px;
-    margin-top: 10px;
-    border-top: 1px solid #FFEDD5;
-    font-size: 0.72rem;
-    color: #9CA3AF;
+    padding-top: 10px;
+    margin-top: 8px;
+    border-top: 1px solid #f3f4f6;
+    font-size: 0.65rem;
+    color: #9ca3af;
 }
 
 .quote-popup-footer i {
-    color: var(--brand);
+    color: #10b981;
 }
 
-@media (max-width: 480px) {
+/* Choti mobile screens ke liye */
+@media (max-width: 360px) {
     .quote-popup-card {
-        padding: 32px 20px 20px;
-        border-radius: 24px;
-    }
-
-    .quote-popup-title {
-        font-size: 1.35rem;
+        padding: 20px 16px 16px;
+        width: 95%;
     }
 
     .quote-popup-icon {
-        width: 58px;
-        height: 58px;
-        font-size: 24px;
+        width: 44px;
+        height: 44px;
+        font-size: 18px;
+    }
+
+    .quote-popup-title {
+        font-size: 1.1rem;
     }
 
     .quote-popup-desc {
-        font-size: 0.8rem;
+        font-size: 0.7rem;
+    }
+
+    .quote-popup-field input {
+        padding: 9px 12px 9px 34px;
+    }
+
+    .quote-popup-submit {
+        padding: 10px;
+        font-size: 0.85rem;
     }
 }

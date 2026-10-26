@@ -1211,34 +1211,36 @@
         <i class="fa-solid fa-arrow-up"></i>
     </button>
 
-    <!-- ============ PREMIUM QUOTE POPUP ============ -->
-    <div id="quotePopup" class="quote-popup" aria-hidden="true" role="dialog" aria-modal="true"
-        aria-labelledby="popupTitle">
+        <!-- ============ PREMIUM QUOTE POPUP (MODERN REDESIGN) ============ -->
+    <div id="quotePopup" class="quote-popup" aria-hidden="true" role="dialog" aria-modal="true">
         <div class="quote-popup-backdrop"></div>
+        
         <div class="quote-popup-card">
+            
+            <!-- Close Button -->
             <button id="closePopup" class="quote-popup-close" aria-label="Close popup">
                 <i class="fa-solid fa-xmark"></i>
             </button>
 
+            <!-- Header -->
             <div class="quote-popup-header">
                 <div class="quote-popup-icon">
                     <i class="fa-solid fa-gift"></i>
                 </div>
                 <span class="quote-popup-badge">Limited Time Offer</span>
-                <h3 id="popupTitle" class="quote-popup-title">Get <span class="text-brand">15% OFF</span> Your First
-                    Order</h3>
-                <p class="quote-popup-desc">Premium eco-friendly packaging for your brand. Request your free quote today
-                    and unlock exclusive savings.</p>
+                <h3 class="quote-popup-title">Get <span class="text-brand">15% OFF</span> Your First Order</h3>
+                <p class="quote-popup-desc">Premium eco-friendly packaging for your brand. Request your free quote today and unlock exclusive savings.</p>
             </div>
 
+            <!-- Form -->
             <form id="popupForm" class="quote-popup-form">
                 <div class="quote-popup-field">
                     <i class="fa-solid fa-user"></i>
-                    <input type="text" name="name" placeholder="Your Name" required />
+                    <input type="text" name="name" placeholder="Your Full Name" required />
                 </div>
                 <div class="quote-popup-field">
                     <i class="fa-solid fa-envelope"></i>
-                    <input type="email" name="email" placeholder="Your Email" required />
+                    <input type="email" name="email" placeholder="Email Address" required />
                 </div>
                 <div class="quote-popup-field">
                     <i class="fa-solid fa-phone"></i>
@@ -1250,12 +1252,15 @@
                 </button>
             </form>
 
+            <!-- Skip Link -->
             <button id="skipPopup" class="quote-popup-skip">No thanks, maybe later</button>
 
+            <!-- Trust Footer -->
             <div class="quote-popup-footer">
                 <i class="fa-solid fa-shield-halved"></i>
                 <span>100% Secure. We respect your privacy.</span>
             </div>
+            
         </div>
     </div>
 
