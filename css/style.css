@@ -776,6 +776,210 @@ body {
     }
 }
 
+/* ==========================================
+   DRUK STYLE SERVICES CAROUSEL (ARROWS OUTSIDE)
+   ========================================== */
+
+.druk-services-swiper {
+    padding-bottom: 10px;
+}
+
+/* Card Base */
+.druk-card {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    border-radius: 20px;
+    overflow: hidden;
+    background: #f3f4f6;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: all 0.4s ease;
+}
+
+.druk-card:hover {
+    box-shadow: 0 20px 40px -10px rgba(249, 115, 22, 0.4);
+}
+
+/* Image */
+.druk-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.druk-card:hover .druk-img {
+    transform: scale(1.08);
+}
+
+/* Dark Gradient Overlay */
+.druk-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(26, 11, 46, 0.95) 0%, rgba(26, 11, 46, 0.6) 40%, transparent 100%);
+    opacity: 0.9;
+    transition: opacity 0.4s ease;
+}
+
+.druk-card:hover .druk-overlay {
+    opacity: 1;
+    background: linear-gradient(to top, rgba(249, 115, 22, 0.95) 0%, rgba(26, 11, 46, 0.8) 50%, transparent 100%);
+}
+
+/* Content Wrapper */
+.druk-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+    z-index: 10;
+}
+
+/* Advanced Tag */
+.druk-tag {
+    display: inline-block;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--brand-light);
+    margin-bottom: 8px;
+    transform: translateY(10px);
+    transition: all 0.4s ease;
+}
+
+/* Title */
+.druk-title {
+    color: #ffffff;
+    font-family: 'Urbanist', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 800;
+    margin-bottom: 8px;
+    line-height: 1.2;
+    transform: translateY(10px);
+    transition: all 0.4s ease;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+/* Description */
+.druk-desc {
+    color: #e5e7eb;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin-bottom: 16px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.4s ease;
+}
+
+/* Advanced Button */
+.druk-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: #ffffff;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-decoration: none;
+    background: transparent;
+    transform: translateY(10px);
+    transition: all 0.4s ease;
+    cursor: pointer;
+}
+
+.druk-btn i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: var(--brand);
+    border-radius: 50%;
+    font-size: 12px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(249, 115, 22, 0.4);
+}
+
+.druk-btn:hover i {
+    background: #ffffff;
+    color: var(--brand);
+    transform: translateX(5px) rotate(-45deg);
+}
+
+/* ==========================================
+   HOVER ANIMATIONS (Desktop)
+   ========================================== */
+@media (min-width: 768px) {
+    .druk-card:hover .druk-tag,
+    .druk-card:hover .druk-title,
+    .druk-card:hover .druk-btn {
+        transform: translateY(0);
+    }
+
+    .druk-card:hover .druk-desc {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==========================================
+   MOBILE RESPONSIVENESS (SQUARE FIX)
+   ========================================== */
+@media (max-width: 767px) {
+    .druk-card {
+        /* 1:1 ka matlab perfect Square */
+        aspect-ratio: 1 / 1; 
+        height: auto;
+        border-radius: 16px;
+    }
+
+    .druk-content {
+        padding: 16px;
+    }
+
+    .druk-tag, .druk-title, .druk-btn, .druk-desc {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    .druk-tag {
+        font-size: 0.6rem;
+        margin-bottom: 4px;
+    }
+
+    .druk-title {
+        font-size: 1.15rem;
+        margin-bottom: 4px;
+    }
+
+    .druk-desc {
+        font-size: 0.8rem;
+        -webkit-line-clamp: 2;
+        margin-bottom: 12px;
+    }
+    
+    .druk-btn {
+        font-size: 0.8rem;
+    }
+
+    .druk-btn i {
+        width: 28px;
+        height: 28px;
+        font-size: 10px;
+    }
+}
+
 /* ========== CONTACT ========== */
 .contact-item {
     display: flex;

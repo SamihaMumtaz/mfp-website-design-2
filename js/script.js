@@ -297,3 +297,22 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 });
+
+// ============ DRUK SERVICES SLIDER ============
+if(document.querySelector('.druk-services-swiper')) {
+    var drukSwiper = new Swiper('.druk-services-swiper', {
+        slidesPerView: 1, 
+        spaceBetween: 16, // Space between cards
+        loop: true,
+        speed: 800,
+        navigation: {
+            nextEl: '.services-next',
+            prevEl: '.services-prev',
+        },
+        breakpoints: {
+            640: { slidesPerView: 2, spaceBetween: 20 },
+            768: { slidesPerView: 3, spaceBetween: 24 },
+            1024: { slidesPerView: 4, spaceBetween: 24 },
+        }
+    });
+}
