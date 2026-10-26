@@ -30,19 +30,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ============ SCROLL PROGRESS / STICKY NAV / BACKTOP ============
     const progressBar = document.querySelector('.scroll-progress');
-    const mainHeader = document.getElementById('mainHeader'); // Naya Wrapper ID
+    const mainHeader = document.getElementById('mainHeader');
     const backTop = document.getElementById('backTop');
+    const backTopProgress = document.getElementById('backTopProgress');
 
     window.addEventListener('scroll', () => {
         const scrollTop = window.scrollY;
         const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPercent = scrollTop / docHeight;
 
         // Scroll Progress bar
         if (progressBar) progressBar.style.width = (scrollTop / docHeight) * 100 + '%';
 
         // Sticky Navbar Logic
         if (mainHeader) {
-            // Agar 50px se zyada scroll ho toh header ko fix (sticky) kar dein
             if (scrollTop > 50) {
                 mainHeader.classList.add('is-sticky');
             } else {
@@ -50,9 +51,31 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // Back to top button
-        if (backTop) backTop.classList.toggle('show', scrollTop > 500);
+        // Advanced Back to top button (Show/Hide + Progress Ring)
+        if (backTop) {
+            if (scrollTop > 500) {
+                backTop.classList.add('show');
+            } else {
+                backTop.classList.remove('show');
+            }
+
+            if (backTopProgress) {
+                const circumference = 157; // 2 * pi * r (2 * 3.14 * 25)
+                const offset = circumference - (scrollPercent * circumference);
+                backTopProgress.style.strokeDashoffset = offset;
+            }
+        }
     });
+
+    // Smooth scroll to top on click
+    if (backTop) {
+        backTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
 
     // ============ MOBILE MENU ============
     const menuBtn = document.getElementById('menuBtn');
@@ -118,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { threshold: 0.5 });
     counters.forEach(c => counterObs.observe(c));
 
-        // ============ ADVANCED CIRCULAR PROGRESS RINGS ============
+    // ============ ADVANCED CIRCULAR PROGRESS RINGS ============
     const progressRings = document.querySelectorAll('.progress-ring-fg');
     const ringObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -128,19 +151,15 @@ document.addEventListener('DOMContentLoaded', () => {
             const circumference = 2 * Math.PI * radius;
 
             if (entry.isIntersecting) {
-                // Set initial state
                 circle.style.strokeDasharray = circumference;
                 circle.style.strokeDashoffset = circumference;
                 circle.style.transition = 'stroke-dashoffset 1.8s cubic-bezier(0.65, 0.05, 0.36, 1)';
                 
-                // Animate to the percentage
                 setTimeout(() => {
                     const offset = circumference - (percent / 100) * circumference;
-                    // 20% of the circle is hidden (the open gap), so we adjust accordingly
                     circle.style.strokeDashoffset = offset;
                 }, 200);
             } else {
-                // Reset when out of view
                 circle.style.transition = 'none';
                 circle.style.strokeDashoffset = circumference;
             }
@@ -240,7 +259,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-        // ============ PREMIUM QUOTE POPUP ============
+    // ============ PREMIUM QUOTE POPUP ============
     const quotePopup = document.getElementById('quotePopup');
     const closePopup = document.getElementById('closePopup');
     const skipPopup = document.getElementById('skipPopup');
@@ -302,7 +321,7 @@ document.addEventListener('DOMContentLoaded', () => {
 if(document.querySelector('.druk-services-swiper')) {
     var drukSwiper = new Swiper('.druk-services-swiper', {
         slidesPerView: 1, 
-        spaceBetween: 16, // Space between cards
+        spaceBetween: 16,
         loop: true,
         speed: 800,
         navigation: {
@@ -320,13 +339,13 @@ if(document.querySelector('.druk-services-swiper')) {
 // ============ QUALITY FEATURES SLIDER ============
 if (document.querySelector('.quality-features-swiper')) {
     const qualitySwiper = new Swiper('.quality-features-swiper', {
-        slidesPerView: 1, // Hamesha 1 card
+        slidesPerView: 1,
         spaceBetween: 16,
         loop: true,
         speed: 800,
         grabCursor: true,
         watchOverflow: true,
-        observer: true, // Agar DOM update ho toh slider khud refresh ho
+        observer: true,
         observeParents: true,
         
         autoplay: {

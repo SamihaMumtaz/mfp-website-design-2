@@ -1169,13 +1169,28 @@ body {
     transform: translateY(-1px);
 }
 
-/* ========== BACK TOP ========== */
+/* ========== ADVANCED BACK TO TOP ========== */
 #backTop {
-    display: none;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
 }
 
 #backTop.show {
-    display: flex;
+    display: flex !important;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Icon animation on hover */
+#backTop:hover i {
+    animation: bounceUp 0.6s ease infinite alternate;
+}
+
+@keyframes bounceUp {
+    from { transform: translateY(0); }
+    to { transform: translateY(-4px); }
 }
 
 /* ========== SCROLLBAR ========== */
