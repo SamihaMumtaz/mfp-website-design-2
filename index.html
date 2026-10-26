@@ -514,133 +514,245 @@
         </div>
     </section>
 
-    <!-- ============ ABOUT ============ -->
+    <!-- ============ ABOUT (PREMIUM REDESIGN - 1020px FIX) ============ -->
     <section id="about"
-        class="py-16 lg:py-28 bg-gradient-to-b from-white via-gray-50 to-white relative overflow-hidden">
-        <div class="absolute top-20 left-0 w-64 h-64 bg-brand-50 rounded-full blur-[80px] opacity-60"></div>
-        <div class="absolute bottom-10 right-0 w-80 h-80 bg-brand-50 rounded-full blur-[100px] opacity-40"></div>
+        class="py-16 sm:py-24 lg:py-32 bg-gradient-to-b from-white via-[#FDF7F2] to-white relative overflow-hidden">
+
+        <!-- Decorative Background Elements -->
+        <div class="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
+            <div
+                class="absolute top-20 -left-20 w-[500px] h-[500px] bg-brand-50 rounded-full blur-[120px] opacity-50 animate-blob">
+            </div>
+            <div class="absolute bottom-20 -right-20 w-[400px] h-[400px] bg-brand-50 rounded-full blur-[100px] opacity-40 animate-blob"
+                style="animation-delay: 3s;"></div>
+            <div class="absolute inset-0 opacity-[0.02]"
+                style="background-image: radial-gradient(circle at 1px 1px, var(--brand) 1px, transparent 0); background-size: 40px 40px;">
+            </div>
+        </div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <div class="grid md:grid-cols-12 gap-10 lg:gap-16 items-center">
 
-                <div class="relative w-full max-w-lg mx-auto lg:mx-0 mt-10 lg:mt-0" data-aos="fade-right">
-                    <div class="relative z-10 rounded-3xl overflow-hidden shadow-2xl shadow-brand/20 bg-gray-200">
-                        <img src="images/about-maqsood-faisal.jpg"
-                            class="w-full h-[300px] sm:h-[400px] lg:h-[550px] object-cover object-center transform hover:scale-105 transition-transform duration-700 relative z-0"
-                            alt="About Maqsood Faisal" />
-                    </div>
+                <!-- LEFT: Image Composition -->
+                <div class="md:col-span-5 relative w-full max-w-lg mx-auto lg:mx-0 mt-10 md:mt-0" data-aos="fade-right"
+                    data-aos-duration="1000">
 
-                    <div
-                        class="absolute -bottom-6 -left-2 sm:-left-6 z-20 bg-white p-3 sm:p-5 rounded-2xl shadow-xl border border-gray-100 flex items-center gap-3 sm:gap-4 animate-bounce-slow">
+                    <div class="relative">
+                        <!-- Main Image Card -->
                         <div
-                            class="w-10 h-10 sm:w-14 sm:h-14 bg-brand-50 rounded-full flex items-center justify-center text-brand text-xl sm:text-2xl">
-                            <i class="fa-solid fa-award"></i>
+                            class="relative rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden shadow-2xl shadow-brand/10 bg-gray-200 border-4 sm:border-[6px] border-white">
+                            <img src="images/about-maqsood-faisal.jpg"
+                                class="w-full h-[280px] sm:h-[400px] md:h-[420px] lg:h-[560px] object-cover object-center"
+                                alt="About Maqsood Faisal" />
                         </div>
-                        <div>
-                            <div class="text-xl sm:text-3xl font-extrabold text-brand-deep">32+</div>
-                            <div class="text-[10px] sm:text-sm text-gray-500 font-semibold uppercase tracking-wide">
-                                Years Exp.</div>
+
+                        <!-- Floating Award Badge -->
+                        <div class="absolute -bottom-5 -left-2 md:-left-2 lg:-left-6 z-20 animate-bounce-slow">
+                            <div
+                                class="bg-white/95 backdrop-blur-xl px-3 py-2 lg:px-5 lg:py-4 rounded-xl lg:rounded-2xl shadow-xl shadow-brand/10 border border-white/60 flex items-center gap-2 lg:gap-4">
+                                <div class="relative">
+                                    <div
+                                        class="w-10 h-10 lg:w-16 lg:h-16 bg-gradient-to-br from-brand to-brand-light rounded-lg lg:rounded-2xl flex items-center justify-center text-white text-lg lg:text-2xl shadow-lg shadow-brand/30">
+                                        <i class="fa-solid fa-award"></i>
+                                    </div>
+                                    <span
+                                        class="absolute -top-1 -right-1 w-2.5 h-2.5 lg:w-3 lg:h-3 bg-brand rounded-full animate-ping"></span>
+                                </div>
+                                <div>
+                                    <div class="text-xl lg:text-3xl font-extrabold text-brand-deep leading-none">
+                                        <span class="counter" data-target="32">0</span><span class="text-brand">+</span>
+                                    </div>
+                                    <div
+                                        class="text-[9px] lg:text-xs text-gray-500 font-bold uppercase tracking-wider mt-0.5">
+                                        Years of Excellence</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Floating Trust Badge -->
+                        <div class="absolute -top-4 -right-2 md:-right-2 lg:-right-6 z-20 animate-bounce-slow"
+                            style="animation-delay: 1s;">
+                            <div
+                                class="bg-white/95 backdrop-blur-xl p-2 lg:p-4 rounded-xl lg:rounded-2xl shadow-xl shadow-brand/10 border border-white/60">
+                                <div class="flex -space-x-2 lg:-space-x-3 mb-1.5 lg:mb-2 justify-center">
+                                    <div
+                                        class="w-6 h-6 lg:w-9 lg:h-9 rounded-full bg-gradient-to-br from-brand to-brand-light text-white text-[8px] lg:text-[10px] font-bold flex items-center justify-center border-2 border-white ring-2 ring-white/50">
+                                        <i class="fa-solid fa-user text-[6px] lg:text-[8px]"></i>
+                                    </div>
+                                    <div
+                                        class="w-6 h-6 lg:w-9 lg:h-9 rounded-full bg-gradient-to-br from-brand-light to-brand text-white text-[8px] lg:text-[10px] font-bold flex items-center justify-center border-2 border-white ring-2 ring-white/50">
+                                        <i class="fa-solid fa-user text-[6px] lg:text-[8px]"></i>
+                                    </div>
+                                    <div
+                                        class="w-6 h-6 lg:w-9 lg:h-9 rounded-full bg-gradient-to-br from-brand-dark to-brand text-white text-[8px] lg:text-[10px] font-bold flex items-center justify-center border-2 border-white ring-2 ring-white/50">
+                                        <i class="fa-solid fa-user text-[6px] lg:text-[8px]"></i>
+                                    </div>
+                                    <div
+                                        class="w-6 h-6 lg:w-9 lg:h-9 rounded-full bg-brand-deep text-white text-[8px] lg:text-[10px] font-bold flex items-center justify-center border-2 border-white ring-2 ring-white/50">
+                                        +30
+                                    </div>
+                                </div>
+                                <div
+                                    class="text-[9px] lg:text-xs text-brand-deep font-bold text-center whitespace-nowrap">
+                                    Trusted by 33+ Brands</div>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="absolute -top-6 -right-2 sm:-right-6 z-20 bg-white p-3 sm:p-4 rounded-2xl shadow-xl border border-gray-100 animate-bounce-slow"
-                        style="animation-delay: 1s;">
-                        <div class="flex -space-x-3 mb-2">
-                            <img src="https://i.pravatar.cc/40?img=1"
-                                class="w-6 h-6 sm:w-8 sm:h-8 rounded-full border-2 border-white">
-                            <img src="https://i.pravatar.cc/40?img=2"
-                                class="w-6 h-6 sm:w-8 sm:h-8 rounded-full border-2 border-white">
-                            <img src="https://i.pravatar.cc/40?img=3"
-                                class="w-6 h-6 sm:w-8 sm:h-8 rounded-full border-2 border-white">
-                            <div
-                                class="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-brand text-white text-[10px] sm:text-xs font-bold flex items-center justify-center border-2 border-white">
-                                +30</div>
-                        </div>
-                        <div class="text-[10px] sm:text-xs text-gray-600 font-semibold">Trusted by 33+ Brands</div>
+                    <div class="absolute -bottom-8 -right-8 w-20 h-20 opacity-20 hidden lg:block"
+                        style="background-image: radial-gradient(circle at 1px 1px, var(--brand) 1.5px, transparent 0); background-size: 12px 12px;">
                     </div>
                 </div>
 
-                <div data-aos="fade-left" class="text-center lg:text-left mt-8 lg:mt-0">
-                    <span
-                        class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-50 border border-brand-100 text-brand text-xs font-bold tracking-widest uppercase mb-4 shadow-sm">
-                        <i class="fa-solid fa-leaf"></i> About Us
-                    </span>
+                <!-- RIGHT: Content -->
+                <div class="md:col-span-7" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="100">
 
+                    <div
+                        class="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-white border border-brand-100/80 text-brand text-[10px] sm:text-xs font-bold tracking-[0.1em] sm:tracking-[0.15em] uppercase mb-5 sm:mb-6 shadow-sm backdrop-blur-sm">
+                        <span class="relative flex h-1.5 w-1.5 sm:h-2 sm:w-2">
+                            <span
+                                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-1.5 w-1.5 sm:h-2 sm:w-2 bg-brand"></span>
+                        </span>
+                        <i class="fa-solid fa-leaf text-[10px] sm:text-sm"></i>
+                        About Us
+                    </div>
+
+                    <!-- Heading (Font size adjusted for 1020px) -->
                     <h2
-                        class="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-brand-deep leading-tight mb-6 font-display">
-                        We Are Solutions For Your <span class="text-brand">Brand Printing</span> & Packaging
+                        class="text-2xl sm:text-3xl lg:text-[2.85rem] font-extrabold text-brand-deep leading-[1.2] sm:leading-[1.15] mb-4 lg:mb-6 font-display tracking-tight">
+                        We Are Your Solution For
+                        <br class="hidden sm:block">
+                        <!-- Whitespace-nowrap lagaya hai taake 1020px par text line break na ho -->
+                        <span class="relative inline-block mt-1 sm:mt-0 pb-2 whitespace-nowrap">
+                            <span
+                                class="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-brand via-brand-dark to-brand">Brand
+                                Printing & Packaging</span>
+                            <!-- Underline SVG -->
+                            <svg class="absolute bottom-0 left-0 w-full h-2 sm:h-3 text-brand/30" viewBox="0 0 200 12"
+                                fill="none" preserveAspectRatio="none">
+                                <path d="M2 10C50 2 150 2 198 10" stroke="currentColor" stroke-width="3"
+                                    stroke-linecap="round" />
+                            </svg>
+                        </span>
                     </h2>
 
-                    <p class="text-gray-600 text-sm sm:text-lg leading-relaxed mb-8">
-                        Welcome to Maqsood Faisal Printing Press, Your Premier Partner in Eco-Friendly Printing and
-                        Packaging Solutions. With cutting-edge technology and a commitment to sustainability, we bring
-                        your visions to life with minimal environmental impact. Discover our wide range of services and
-                        join leading brands in trusting us for eco-conscious packaging needs.
+                    <!-- Text -->
+                    <p class="text-gray-600 text-[13px] lg:text-base leading-relaxed mb-6 lg:mb-8 max-w-2xl">
+                        Welcome to <strong class="text-brand-deep font-bold">Maqsood Faisal Printing Press</strong> —
+                        your premier partner in eco-friendly printing and packaging solutions. With cutting-edge
+                        technology and a deep commitment to sustainability, we bring your visions to life with minimal
+                        environmental impact.
                     </p>
 
-                    <div class="grid grid-cols-2 gap-x-2 sm:gap-x-6 gap-y-4 mb-10 text-left">
-                        <div class="flex items-start sm:items-center gap-2 group">
+                    <!-- Feature Grid (2x2 Mobile, 3x2 Tablet, 2x2 Desktop) -->
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-2 gap-2 sm:gap-3 mb-8 sm:mb-10">
+                        <!-- Item 1 -->
+                        <div
+                            class="feature-item group bg-white rounded-lg sm:rounded-xl p-2.5 lg:p-3.5 border border-gray-100 hover:border-brand/30 hover:shadow-lg hover:shadow-brand/5 transition-all duration-300 cursor-pointer">
                             <div
-                                class="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-brand-50 flex items-center justify-center text-brand group-hover:bg-brand group-hover:text-white transition-colors duration-300 flex-shrink-0 mt-0.5 sm:mt-0">
-                                <i class="fa-solid fa-check text-[10px] sm:text-xs"></i>
+                                class="flex flex-col lg:flex-row items-center lg:items-start text-center lg:text-left gap-1.5 lg:gap-3">
+                                <div
+                                    class="w-8 h-8 lg:w-9 lg:h-9 rounded-md lg:rounded-lg bg-brand-50 flex items-center justify-center text-brand group-hover:bg-brand group-hover:text-white transition-all duration-300 flex-shrink-0">
+                                    <i class="fa-solid fa-leaf text-[10px] lg:text-sm"></i>
+                                </div>
+                                <span
+                                    class="text-gray-700 font-semibold text-[10px] lg:text-sm leading-tight mt-0.5 lg:mt-0">Sustainable
+                                    Practices</span>
                             </div>
-                            <span class="text-gray-700 font-semibold text-[11px] sm:text-base leading-tight">Sustainable
-                                Practices</span>
                         </div>
-                        <div class="flex items-start sm:items-center gap-2 group">
+                        <!-- Item 2 -->
+                        <div
+                            class="feature-item group bg-white rounded-lg sm:rounded-xl p-2.5 lg:p-3.5 border border-gray-100 hover:border-brand/30 hover:shadow-lg hover:shadow-brand/5 transition-all duration-300 cursor-pointer">
                             <div
-                                class="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-brand-50 flex items-center justify-center text-brand group-hover:bg-brand group-hover:text-white transition-colors duration-300 flex-shrink-0 mt-0.5 sm:mt-0">
-                                <i class="fa-solid fa-check text-[10px] sm:text-xs"></i>
+                                class="flex flex-col lg:flex-row items-center lg:items-start text-center lg:text-left gap-1.5 lg:gap-3">
+                                <div
+                                    class="w-8 h-8 lg:w-9 lg:h-9 rounded-md lg:rounded-lg bg-brand-50 flex items-center justify-center text-brand group-hover:bg-brand group-hover:text-white transition-all duration-300 flex-shrink-0">
+                                    <i class="fa-solid fa-microchip text-[10px] lg:text-sm"></i>
+                                </div>
+                                <span
+                                    class="text-gray-700 font-semibold text-[10px] lg:text-sm leading-tight mt-0.5 lg:mt-0">Advanced
+                                    Technology</span>
                             </div>
-                            <span class="text-gray-700 font-semibold text-[11px] sm:text-base leading-tight">Advanced
-                                Technology</span>
                         </div>
-                        <div class="flex items-start sm:items-center gap-2 group">
+                        <!-- Item 3 -->
+                        <div
+                            class="feature-item group bg-white rounded-lg sm:rounded-xl p-2.5 lg:p-3.5 border border-gray-100 hover:border-brand/30 hover:shadow-lg hover:shadow-brand/5 transition-all duration-300 cursor-pointer">
                             <div
-                                class="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-brand-50 flex items-center justify-center text-brand group-hover:bg-brand group-hover:text-white transition-colors duration-300 flex-shrink-0 mt-0.5 sm:mt-0">
-                                <i class="fa-solid fa-check text-[10px] sm:text-xs"></i>
+                                class="flex flex-col lg:flex-row items-center lg:items-start text-center lg:text-left gap-1.5 lg:gap-3">
+                                <div
+                                    class="w-8 h-8 lg:w-9 lg:h-9 rounded-md lg:rounded-lg bg-brand-50 flex items-center justify-center text-brand group-hover:bg-brand group-hover:text-white transition-all duration-300 flex-shrink-0">
+                                    <i class="fa-solid fa-recycle text-[10px] lg:text-sm"></i>
+                                </div>
+                                <span
+                                    class="text-gray-700 font-semibold text-[10px] lg:text-sm leading-tight mt-0.5 lg:mt-0">Eco-Friendly
+                                    Solutions</span>
                             </div>
-                            <span
-                                class="text-gray-700 font-semibold text-[11px] sm:text-base leading-tight">Eco-Friendly
-                                Solutions</span>
                         </div>
-                        <div class="flex items-start sm:items-center gap-2 group">
+                        <!-- Item 4 -->
+                        <div
+                            class="feature-item group bg-white rounded-lg sm:rounded-xl p-2.5 lg:p-3.5 border border-gray-100 hover:border-brand/30 hover:shadow-lg hover:shadow-brand/5 transition-all duration-300 cursor-pointer">
                             <div
-                                class="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-brand-50 flex items-center justify-center text-brand group-hover:bg-brand group-hover:text-white transition-colors duration-300 flex-shrink-0 mt-0.5 sm:mt-0">
-                                <i class="fa-solid fa-check text-[10px] sm:text-xs"></i>
+                                class="flex flex-col lg:flex-row items-center lg:items-start text-center lg:text-left gap-1.5 lg:gap-3">
+                                <div
+                                    class="w-8 h-8 lg:w-9 lg:h-9 rounded-md lg:rounded-lg bg-brand-50 flex items-center justify-center text-brand group-hover:bg-brand group-hover:text-white transition-all duration-300 flex-shrink-0">
+                                    <i class="fa-solid fa-handshake text-[10px] lg:text-sm"></i>
+                                </div>
+                                <span
+                                    class="text-gray-700 font-semibold text-[10px] lg:text-sm leading-tight mt-0.5 lg:mt-0">Trusted
+                                    by Brands</span>
                             </div>
-                            <span class="text-gray-700 font-semibold text-[11px] sm:text-base leading-tight">Trusted by
-                                Brands</span>
                         </div>
-                        <div class="flex items-start sm:items-center gap-2 group">
+                        <!-- Item 5 -->
+                        <div
+                            class="feature-item group bg-white rounded-lg sm:rounded-xl p-2.5 lg:p-3.5 border border-gray-100 hover:border-brand/30 hover:shadow-lg hover:shadow-brand/5 transition-all duration-300 cursor-pointer">
                             <div
-                                class="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-brand-50 flex items-center justify-center text-brand group-hover:bg-brand group-hover:text-white transition-colors duration-300 flex-shrink-0 mt-0.5 sm:mt-0">
-                                <i class="fa-solid fa-check text-[10px] sm:text-xs"></i>
+                                class="flex flex-col lg:flex-row items-center lg:items-start text-center lg:text-left gap-1.5 lg:gap-3">
+                                <div
+                                    class="w-8 h-8 lg:w-9 lg:h-9 rounded-md lg:rounded-lg bg-brand-50 flex items-center justify-center text-brand group-hover:bg-brand group-hover:text-white transition-all duration-300 flex-shrink-0">
+                                    <i class="fa-solid fa-lightbulb text-[10px] lg:text-sm"></i>
+                                </div>
+                                <span
+                                    class="text-gray-700 font-semibold text-[10px] lg:text-sm leading-tight mt-0.5 lg:mt-0">Innovative
+                                    Packaging</span>
                             </div>
-                            <span class="text-gray-700 font-semibold text-[11px] sm:text-base leading-tight">Innovative
-                                Packaging</span>
                         </div>
-                        <div class="flex items-start sm:items-center gap-2 group">
+                        <!-- Item 6 -->
+                        <div
+                            class="feature-item group bg-white rounded-lg sm:rounded-xl p-2.5 lg:p-3.5 border border-gray-100 hover:border-brand/30 hover:shadow-lg hover:shadow-brand/5 transition-all duration-300 cursor-pointer">
                             <div
-                                class="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-brand-50 flex items-center justify-center text-brand group-hover:bg-brand group-hover:text-white transition-colors duration-300 flex-shrink-0 mt-0.5 sm:mt-0">
-                                <i class="fa-solid fa-check text-[10px] sm:text-xs"></i>
+                                class="flex flex-col lg:flex-row items-center lg:items-start text-center lg:text-left gap-1.5 lg:gap-3">
+                                <div
+                                    class="w-8 h-8 lg:w-9 lg:h-9 rounded-md lg:rounded-lg bg-brand-50 flex items-center justify-center text-brand group-hover:bg-brand group-hover:text-white transition-all duration-300 flex-shrink-0">
+                                    <i class="fa-solid fa-earth-americas text-[10px] lg:text-sm"></i>
+                                </div>
+                                <span
+                                    class="text-gray-700 font-semibold text-[10px] lg:text-sm leading-tight mt-0.5 lg:mt-0">Environmentally
+                                    Responsible</span>
                             </div>
-                            <span
-                                class="text-gray-700 font-semibold text-[11px] sm:text-base leading-tight">Environmentally
-                                Responsible</span>
                         </div>
                     </div>
 
-                    <div class="flex flex-row justify-center lg:justify-start gap-3 w-full">
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-row gap-3 sm:gap-4 w-full">
                         <a href="#contact"
-                            class="flex-1 sm:flex-none inline-flex items-center justify-center bg-brand hover:bg-brand-dark text-white px-4 sm:px-8 py-3 rounded-full font-bold shadow-[0_0_15px_rgba(249,115,22,0.4)] transition-all duration-300 text-xs sm:text-base whitespace-nowrap">
-                            Get in Touch <i class="fa-solid fa-arrow-right ml-1"></i>
+                            class="group relative flex-1 md:flex-none inline-flex items-center justify-center gap-1.5 sm:gap-2.5 bg-gradient-to-r from-brand to-brand-dark hover:from-brand-dark hover:to-brand text-white px-2 sm:px-7 py-2.5 lg:py-3.5 rounded-lg lg:rounded-xl font-bold shadow-md sm:shadow-lg shadow-brand/30 hover:shadow-xl hover:shadow-brand/40 hover:-translate-y-0.5 transition-all duration-300 text-[11px] md:text-sm lg:text-base overflow-hidden">
+                            <span class="relative z-10 whitespace-nowrap">Get in Touch</span>
+                            <i
+                                class="fa-solid fa-arrow-right relative z-10 group-hover:translate-x-1 transition-transform duration-300 text-[9px] md:text-xs lg:text-sm"></i>
+                            <div
+                                class="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent">
+                            </div>
                         </a>
+
                         <a href="#services"
-                            class="flex-1 sm:flex-none inline-flex items-center justify-center bg-transparent border-2 border-gray-200 hover:border-brand hover:text-brand text-brand-deep px-4 sm:px-8 py-3 rounded-full font-bold transition-all duration-300 text-xs sm:text-base whitespace-nowrap">
-                            Our Services <i class="fa-solid fa-layer-group ml-1"></i>
+                            class="group flex-1 md:flex-none inline-flex items-center justify-center gap-1.5 sm:gap-2.5 bg-white border-2 border-gray-200 hover:border-brand hover:text-brand text-brand-deep px-2 sm:px-7 py-2.5 lg:py-3.5 rounded-lg lg:rounded-xl font-bold transition-all duration-300 text-[11px] md:text-sm lg:text-base hover:-translate-y-0.5 hover:shadow-lg hover:shadow-brand/10">
+                            <span class="whitespace-nowrap">Our Services</span>
+                            <i
+                                class="fa-solid fa-layer-group group-hover:rotate-12 transition-transform duration-300 text-[9px] md:text-xs lg:text-sm"></i>
                         </a>
                     </div>
+
                 </div>
             </div>
         </div>
