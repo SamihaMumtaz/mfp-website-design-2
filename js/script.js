@@ -1,8 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     // ============ AOS ============
-    AOS.init({ duration: 900, once: false, easing: 'ease-out-cubic' }); 
-    // Note: once: false kar diya hai taake scroll par animations bar bar chalein
+    AOS.init({ duration: 900, once: false, easing: 'ease-out-cubic' });
 
     // ============ CUSTOM CURSOR ============
     const dot = document.querySelector('.cursor-dot');
@@ -29,25 +28,33 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ============ SCROLL PROGRESS / NAV / BACKTOP ============
+    // ============ SCROLL PROGRESS / STICKY NAV / BACKTOP ============
     const progressBar = document.querySelector('.scroll-progress');
-    const navbar = document.getElementById('navbar');
+    const mainHeader = document.getElementById('mainHeader'); // Naya Wrapper ID
     const backTop = document.getElementById('backTop');
 
     window.addEventListener('scroll', () => {
         const scrollTop = window.scrollY;
         const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-        
+
+        // Scroll Progress bar
         if (progressBar) progressBar.style.width = (scrollTop / docHeight) * 100 + '%';
-        if (navbar) navbar.classList.toggle('scrolled', scrollTop > 40);
+
+        // Sticky Navbar Logic
+        if (mainHeader) {
+            // Agar 50px se zyada scroll ho toh header ko fix (sticky) kar dein
+            if (scrollTop > 50) {
+                mainHeader.classList.add('is-sticky');
+            } else {
+                mainHeader.classList.remove('is-sticky');
+            }
+        }
+
+        // Back to top button
         if (backTop) backTop.classList.toggle('show', scrollTop > 500);
     });
 
-    if (backTop) {
-        backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-    }
-
-    // ============ MOBILE MENU (LEFT SIDE) ============
+    // ============ MOBILE MENU ============
     const menuBtn = document.getElementById('menuBtn');
     const closeMenuBtn = document.getElementById('closeMenuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
@@ -85,64 +92,33 @@ document.addEventListener('DOMContentLoaded', () => {
         if (window.innerWidth >= 1024) closeMobileMenu();
     });
 
-    // ============ COUNTERS (Repeat on Scroll) ============
+    // ============ COUNTERS ============
     const counters = document.querySelectorAll('.counter');
     const counterObs = new IntersectionObserver(entries => {
         entries.forEach(entry => {
             const el = entry.target;
-            
             if (entry.isIntersecting) {
-                // Start animation
                 const target = +el.dataset.target;
                 let count = 0;
                 const step = target / 60;
-
                 const tick = () => {
                     count += step;
-                    if (count < target) { 
-                        el.innerText = Math.ceil(count); 
-                        requestAnimationFrame(tick); 
-                    } else { 
-                        el.innerText = target; 
+                    if (count < target) {
+                        el.innerText = Math.ceil(count);
+                        requestAnimationFrame(tick);
+                    } else {
+                        el.innerText = target;
                     }
                 };
                 tick();
             } else {
-                // Reset to 0 when out of view
                 el.innerText = '0';
             }
         });
     }, { threshold: 0.5 });
     counters.forEach(c => counterObs.observe(c));
 
-    // ============ CIRCULAR PROGRESS (Repeat on Scroll) ============
-    const circles = document.querySelectorAll('.progress-circle');
-    const circleObs = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            const wrap = entry.target;
-            const percent = +wrap.dataset.percent;
-            const circle = wrap.querySelector('.fg-ring');
-            const r = 60;
-            const circumference = 2 * Math.PI * r;
-
-            if (entry.isIntersecting) {
-                circle.style.strokeDasharray = circumference;
-                circle.style.strokeDashoffset = circumference;
-                circle.style.transition = 'stroke-dashoffset 1.5s ease-in-out';
-                
-                setTimeout(() => {
-                    const offset = circumference - (percent / 100) * circumference;
-                    circle.style.strokeDashoffset = offset;
-                }, 100);
-            } else {
-                circle.style.transition = 'none';
-                circle.style.strokeDashoffset = circumference;
-            }
-        });
-    }, { threshold: 0.5 });
-    circles.forEach(c => circleObs.observe(c));
-
-    // ============ NEW CIRCULAR PROGRESS RINGS (Quality Section) ============
+        // ============ ADVANCED CIRCULAR PROGRESS RINGS ============
     const progressRings = document.querySelectorAll('.progress-ring-fg');
     const ringObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -152,15 +128,19 @@ document.addEventListener('DOMContentLoaded', () => {
             const circumference = 2 * Math.PI * radius;
 
             if (entry.isIntersecting) {
+                // Set initial state
                 circle.style.strokeDasharray = circumference;
                 circle.style.strokeDashoffset = circumference;
-                circle.style.transition = 'stroke-dashoffset 1.5s ease-in-out';
+                circle.style.transition = 'stroke-dashoffset 1.8s cubic-bezier(0.65, 0.05, 0.36, 1)';
                 
+                // Animate to the percentage
                 setTimeout(() => {
                     const offset = circumference - (percent / 100) * circumference;
+                    // 20% of the circle is hidden (the open gap), so we adjust accordingly
                     circle.style.strokeDashoffset = offset;
-                }, 100);
+                }, 200);
             } else {
+                // Reset when out of view
                 circle.style.transition = 'none';
                 circle.style.strokeDashoffset = circumference;
             }
@@ -179,55 +159,12 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.addEventListener('mouseleave', () => { btn.style.transform = 'translate(0,0)'; });
     });
 
-    // ============ 3D TILT ============
-    document.querySelectorAll('.tilt').forEach(el => {
-        el.addEventListener('mousemove', e => {
-            const rect = el.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            const rx = ((y - rect.height / 2) / rect.height) * -10;
-            const ry = ((x - rect.width / 2) / rect.width) * 10;
-            el.style.transform = `perspective(1000px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-8px)`;
-        });
-        el.addEventListener('mouseleave', () => {
-            el.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
-        });
-    });
-
-    // ============ SPOTLIGHT ============
-    document.querySelectorAll('.spotlight').forEach(card => {
-        card.addEventListener('mousemove', e => {
-            const rect = card.getBoundingClientRect();
-            card.style.setProperty('--mx', (e.clientX - rect.left) + 'px');
-            card.style.setProperty('--my', (e.clientY - rect.top) + 'px');
-        });
-    });
-
-    // ============ PROCESS LINE FILL (Repeat on Scroll) ============
-    const processLine = document.querySelector('.process-line-fill');
-    const processTimeline = document.querySelector('.process-timeline');
-
-    if (processLine && processTimeline) {
-        const lineObs = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    processLine.style.transition = 'height 1.2s ease';
-                    processLine.style.height = '100%';
-                } else {
-                    processLine.style.transition = 'none';
-                    processLine.style.height = '0%';
-                }
-            });
-        }, { threshold: 0.2 });
-        lineObs.observe(processTimeline);
-    }
-
-    // ============ FORM SUBMIT ============
-    const form = document.querySelector('form');
+    // ============ MAIN FORM SUBMIT ============
+    const form = document.querySelector('.glass-form');
     if (form) {
         form.addEventListener('submit', e => {
             e.preventDefault();
-            const btn = e.target.querySelector('button');
+            const btn = e.target.querySelector('button[type="submit"]');
             const originalHTML = btn.innerHTML;
             btn.innerHTML = '<i class="fa-solid fa-check"></i> Sent Successfully!';
             btn.style.background = 'var(--brand-dark)';
@@ -249,47 +186,16 @@ document.addEventListener('DOMContentLoaded', () => {
     let heroInterval;
 
     const heroServicesData = [
-        {
-            title: "Plastic Packaging",
-            desc: "Plastic packaging is a versatile, durable, and cost-effective solution for preserving and protecting products. Customizable in design and size, plastic packaging enhances brand visibility.",
-            btnText: "Get Plastic Packaging",
-            link: "#plastic-packaging"
-        },
-        {
-            title: "Tissue Conversion",
-            desc: "Tissue conversion transforms raw tissue paper into finished products like napkins, facial tissues, and paper towels.",
-            btnText: "Get Tissue Conversion",
-            link: "#tissue-conversion"
-        },
-        {
-            title: "Flexible Printing",
-            desc: "Flexible printing offers versatile, efficient solutions for packaging and custom designs. It adapts to different materials and shapes, ensuring high-quality, durable prints that enhance product appeal and branding.",
-            btnText: "Get Flexible Printing",
-            link: "#flexible-printing"
-        },
-        {
-            title: "Roll to Roll Label Printing",
-            desc: "Roll-to-roll label printing is an efficient, high-speed solution for producing custom labels in bulk. Ideal for industries.",
-            btnText: "Get Roll to Roll Labels",
-            link: "#roll-to-roll"
-        },
-        {
-            title: "Laminated Tubes",
-            desc: "Laminated tubes are durable, lightweight packaging solutions ideal for cosmetics, pharmaceuticals, and food products.",
-            btnText: "Get Laminated Tubes",
-            link: "#laminated-tubes"
-        },
-        {
-            title: "Offset Printing",
-            desc: "Offset printing is a high-quality, cost-effective method ideal for large volumes. It ensures vibrant colors, sharp images, and professional results on various materials.",
-            btnText: "Get Offset Printing",
-            link: "#offset-printing"
-        }
+        { title: "Plastic Packaging", desc: "Plastic packaging is a versatile, durable, and cost-effective solution for preserving and protecting products. Customizable in design and size, plastic packaging enhances brand visibility.", btnText: "Get Plastic Packaging", link: "#plastic-packaging" },
+        { title: "Tissue Conversion", desc: "Tissue conversion transforms raw tissue paper into finished products like napkins, facial tissues, and paper towels.", btnText: "Get Tissue Conversion", link: "#tissue-conversion" },
+        { title: "Flexible Printing", desc: "Flexible printing offers versatile, efficient solutions for packaging and custom designs. It adapts to different materials and shapes, ensuring high-quality, durable prints that enhance product appeal and branding.", btnText: "Get Flexible Printing", link: "#flexible-printing" },
+        { title: "Roll to Roll Label Printing", desc: "Roll-to-roll label printing is an efficient, high-speed solution for producing custom labels in bulk. Ideal for industries.", btnText: "Get Roll to Roll Labels", link: "#roll-to-roll" },
+        { title: "Laminated Tubes", desc: "Laminated tubes are durable, lightweight packaging solutions ideal for cosmetics, pharmaceuticals, and food products.", btnText: "Get Laminated Tubes", link: "#laminated-tubes" },
+        { title: "Offset Printing", desc: "Offset printing is a high-quality, cost-effective method ideal for large volumes. It ensures vibrant colors, sharp images, and professional results on various materials.", btnText: "Get Offset Printing", link: "#offset-printing" }
     ];
 
     function changeHeroSlide(index) {
         if (!heroSlides.length || !dynamicHeroTitle || !dynamicHeroDesc) return;
-
         heroSlides.forEach(slide => slide.classList.remove('active'));
         heroSlides[index].classList.add('active');
 
@@ -302,10 +208,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const data = heroServicesData[index];
             dynamicHeroTitle.innerText = data.title;
             dynamicHeroDesc.innerText = data.desc;
-            
             if (dynamicHeroBtnText) dynamicHeroBtnText.innerText = data.btnText;
             if (dynamicHeroBtn) dynamicHeroBtn.href = data.link;
-            
             dynamicHeroTitle.style.opacity = '1';
             dynamicHeroDesc.style.opacity = '1';
             dynamicHeroTitle.style.transform = 'translateY(0)';
@@ -315,7 +219,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (heroSlides.length > 0) {
         changeHeroSlide(0);
-        
         function startHeroInterval() {
             clearInterval(heroInterval);
             heroInterval = setInterval(() => {
@@ -329,14 +232,67 @@ document.addEventListener('DOMContentLoaded', () => {
         if (heroSection) {
             const heroObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        startHeroInterval();
-                    } else {
-                        clearInterval(heroInterval);
-                    }
+                    if (entry.isIntersecting) startHeroInterval();
+                    else clearInterval(heroInterval);
                 });
             }, { threshold: 0.1 });
             heroObserver.observe(heroSection);
+        }
+    }
+
+    // ============ PREMIUM QUOTE POPUP ============
+    const quotePopup = document.getElementById('quotePopup');
+    const closePopup = document.getElementById('closePopup');
+    const skipPopup = document.getElementById('skipPopup');
+    const popupForm = document.getElementById('popupForm');
+    const popupBackdrop = quotePopup ? quotePopup.querySelector('.quote-popup-backdrop') : null;
+
+    if (quotePopup) {
+        // Show popup after 5 seconds — but only ONCE per session
+        if (!sessionStorage.getItem('quotePopupShown')) {
+            setTimeout(() => {
+                openQuotePopup();
+            }, 5000);
+        }
+
+        function openQuotePopup() {
+            quotePopup.classList.add('active');
+            quotePopup.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+            sessionStorage.setItem('quotePopupShown', 'true');
+        }
+
+        function closeQuotePopup() {
+            quotePopup.classList.remove('active');
+            quotePopup.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+        }
+
+        if (closePopup) closePopup.addEventListener('click', closeQuotePopup);
+        if (skipPopup) skipPopup.addEventListener('click', closeQuotePopup);
+        if (popupBackdrop) popupBackdrop.addEventListener('click', closeQuotePopup);
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && quotePopup.classList.contains('active')) {
+                closeQuotePopup();
+            }
+        });
+
+        // Popup form submit
+        if (popupForm) {
+            popupForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const btn = popupForm.querySelector('.quote-popup-submit');
+                const originalHTML = btn.innerHTML;
+                btn.innerHTML = '<span>Success! Check your email</span> <i class="fa-solid fa-check"></i>';
+                btn.style.background = '#10B981';
+                setTimeout(() => {
+                    btn.innerHTML = originalHTML;
+                    btn.style.background = '';
+                    popupForm.reset();
+                    closeQuotePopup();
+                }, 2000);
+            });
         }
     }
 
