@@ -316,3 +316,32 @@ if(document.querySelector('.druk-services-swiper')) {
         }
     });
 }
+
+// ============ QUALITY FEATURES SLIDER ============
+if (document.querySelector('.quality-features-swiper')) {
+    const qualitySwiper = new Swiper('.quality-features-swiper', {
+        slidesPerView: 1, // Hamesha 1 card
+        spaceBetween: 16,
+        loop: true,
+        speed: 800,
+        grabCursor: true,
+        watchOverflow: true,
+        observer: true, // Agar DOM update ho toh slider khud refresh ho
+        observeParents: true,
+        
+        autoplay: {
+            delay: 3500, 
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true, 
+        },
+
+        navigation: {
+            nextEl: '.quality-slider-next',
+            prevEl: '.quality-slider-prev',
+        },
+        pagination: {
+            el: '.quality-slider-dots',
+            clickable: true,
+        },
+    });
+}

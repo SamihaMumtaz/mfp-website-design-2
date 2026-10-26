@@ -980,6 +980,114 @@ body {
     }
 }
 
+/* ==========================================
+   QUALITY SECTION FINAL CSS (100% LOCKED)
+   ========================================== */
+
+/* Container ko lock karna taake screen se bahar na jaye */
+.quality-features-swiper {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
+}
+
+.quality-feature-card {
+    background: rgba(255, 255, 255, 0.04) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 16px !important;
+    padding: 20px !important;
+    height: 100% !important;
+    min-height: 180px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important; /* Card ko pura space dene ke liye */
+}
+
+.quality-feature-icon-wrap {
+    margin-bottom: 14px !important;
+}
+
+.quality-feature-icon {
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 10px !important;
+    background: linear-gradient(135deg, var(--brand), var(--brand-dark)) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: #fff !important;
+}
+
+.quality-feature-title {
+    font-family: 'Urbanist', sans-serif !important;
+    font-size: 1.05rem !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+    margin-bottom: 6px !important;
+}
+
+.quality-feature-desc {
+    font-size: 0.85rem !important;
+    color: #9ca3af !important;
+    line-height: 1.5 !important;
+    flex-grow: 1 !important;
+}
+
+/* Slider Controls */
+.quality-slider-controls {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+}
+
+.quality-slider-prev,
+.quality-slider-next {
+    width: 38px !important;
+    height: 38px !important;
+    border-radius: 50% !important;
+    background: transparent !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    color: #fff !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 12px !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    flex-shrink: 0 !important;
+}
+
+.quality-slider-prev:hover,
+.quality-slider-next:hover {
+    background: var(--brand) !important;
+    border-color: var(--brand) !important;
+}
+
+.quality-slider-dots {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    flex-grow: 1 !important;
+}
+
+.quality-slider-dots .swiper-pagination-bullet {
+    width: 20px !important;
+    height: 3px !important;
+    border-radius: 2px !important;
+    background: rgba(255, 255, 255, 0.2) !important;
+    opacity: 1 !important;
+    margin: 0 !important;
+}
+
+.quality-slider-dots .swiper-pagination-bullet-active {
+    background: var(--brand) !important;
+    width: 30px !important;
+}
+
 /* ========== CONTACT ========== */
 .contact-item {
     display: flex;
